@@ -1,0 +1,414 @@
+import tkinter as tk
+from tkinter import messagebox
+import random
+
+# ============================================================
+# CODE QUEST - INTERACTIVE LEARNING PORTAL
+# Tkinter desktop version
+# ============================================================
+
+BG = "#071B22"
+PANEL = "#12343D"
+PANEL_LIGHT = "#17434C"
+TEAL = "#42E6D8"
+LIME = "#C7F36B"
+WHITE = "#F4F8F8"
+MUTED = "#A9C1C7"
+DARK = "#08232B"
+RED = "#FF7777"
+
+lessons = {
+    1: {
+        "title": "Introduction to Computing",
+        "subtitle": "Understand how a computer works.",
+        "sections": [
+            ("What is Computing?",
+             "Computing is the process of using a computer to receive, process, store, and produce information. A computer follows instructions to complete tasks."),
+            ("The Four Basic Functions",
+             "1. INPUT - Data entered into the computer.\n"
+             "2. PROCESS - The computer works on the data.\n"
+             "3. OUTPUT - The result produced by the computer.\n"
+             "4. STORAGE - Information saved for future use."),
+            ("Example",
+             "A calculator receives two numbers, adds them, and displays the answer.\n\n"
+             "number1 = 10\nnumber2 = 5\nanswer = number1 + number2\nprint(answer)\n\n"
+             "Output:\n15"),
+            ("Why is it important?",
+             "Understanding computing helps us know how computers handle information and how programming instructions make tasks easier.")
+        ]
+    },
+    2: {
+        "title": "Python Basic Syntax",
+        "subtitle": "Learn the basic rules for writing Python code.",
+        "sections": [
+            ("What is Syntax?",
+             "Syntax refers to the rules and structure that must be followed when writing a program. Python code must follow its syntax so the interpreter can understand it."),
+            ("Important Rules",
+             "• Keywords are reserved words in Python.\n"
+             "• Identifiers are names given to variables and functions.\n"
+             "• Indentation uses spaces to organize code blocks.\n"
+             "• Python is case-sensitive. Name and name are different."),
+            ("Example",
+             'name = "Menard"\n\nif name == "Menard":\n    print("Welcome!")\n\nOutput:\nWelcome!'),
+            ("Remember",
+             "Use correct spelling, quotation marks, colons, and indentation. A small syntax mistake can cause an error.")
+        ]
+    },
+    3: {
+        "title": "Printing Output",
+        "subtitle": "Display information using print().",
+        "sections": [
+            ("What is print()?",
+             "The print() function displays text, numbers, variables, and the results of expressions on the screen."),
+            ("Examples",
+             'print("Hello, World!")\nprint(25)\nname = "Menard"\nprint(name)\nprint(10 + 5)'),
+            ("Expected Output",
+             "Hello, World!\n25\nMenard\n15"),
+            ("Remember",
+             "Use quotation marks when displaying text directly. You do not need quotation marks when printing a variable name.")
+        ]
+    },
+    4: {
+        "title": "Python Comments",
+        "subtitle": "Add notes to make code easier to understand.",
+        "sections": [
+            ("What are Comments?",
+             "Comments are notes written inside a program to explain what the code does. Python ignores comments when the program runs."),
+            ("Single-line Comment",
+             "Use the # symbol.\n\n# This is a comment\nprint('Hello')"),
+            ("Multi-line Notes",
+             'Triple quotes are commonly used for multi-line notes or documentation.\n\n"""This is a multi-line note."""'),
+            ("Why use comments?",
+             "Comments help programmers understand, explain, and maintain their code.")
+        ]
+    },
+    5: {
+        "title": "Variables, Constants and Database",
+        "subtitle": "Store and organize information.",
+        "sections": [
+            ("Variables",
+             "A variable is a named storage location used to hold data. Its value can change while the program runs.\n\nname = 'Menard'\nage = 18"),
+            ("Constants",
+             "A constant is a value intended to remain unchanged. Python does not enforce constants, but uppercase names are commonly used.\n\nPI = 3.14159"),
+            ("Database",
+             "A database is an organized collection of information that can be stored, managed, and retrieved. Examples include student records, inventory, and customer information."),
+            ("Remember",
+             "Choose meaningful variable names and keep related information organized.")
+        ]
+    },
+    6: {
+        "title": "Basic Data Types in Python",
+        "subtitle": "Identify the kind of value stored in a variable.",
+        "sections": [
+            ("Integer (int)",
+             "Whole numbers without decimal points.\n\nage = 18\nprint(type(age))\nOutput: <class 'int'>"),
+            ("Float (float)",
+             "Numbers that contain decimal points.\n\nprice = 99.50\nprint(type(price))\nOutput: <class 'float'>"),
+            ("String and Boolean",
+             'String (str) stores text: name = "Menard"\n'
+             "Boolean (bool) stores True or False: is_student = True"),
+            ("Type Conversion",
+             "Use int(), float(), and str() to convert values from one data type to another.")
+        ]
+    },
+    7: {
+        "title": "Arithmetic Operators and Expression",
+        "subtitle": "Perform mathematical operations in Python.",
+        "sections": [
+            ("Arithmetic Operators",
+             "+ Addition\n- Subtraction\n* Multiplication\n/ Division\n% Modulus (remainder)\n// Floor division\n** Exponentiation"),
+            ("Example",
+             "a = 10\nb = 3\nprint(a + b)   # 13\nprint(a - b)   # 7\nprint(a * b)   # 30\nprint(a / b)   # 3.333...\nprint(a % b)   # 1\nprint(a // b)  # 3\nprint(a ** b)  # 1000"),
+            ("Expressions",
+             "An expression is a combination of values, variables, and operators that produces a result."),
+            ("Remember",
+             "Python follows the usual order of operations. Use parentheses when you want to make the order clear.")
+        ]
+    },
+    8: {
+        "title": "Basic Input and Output",
+        "subtitle": "Receive information and display results.",
+        "sections": [
+            ("The input() Function",
+             "The input() function allows a user to enter information through the keyboard. The value returned by input() is a string."),
+            ("The print() Function",
+             "The print() function displays information or results on the screen."),
+            ("Example",
+             'name = input("Enter your name: ")\n'
+             'age = int(input("Enter your age: "))\n'
+             'print("Hello", name)\n'
+             'print("Your age is", age)'),
+            ("Type Conversion",
+             "Use int() when you need a whole number and float() when you need a decimal number from user input.")
+        ]
+    },
+    9: {
+        "title": "Conditional Statements",
+        "subtitle": "Make decisions using if, elif, and else.",
+        "sections": [
+            ("What are Conditions?",
+             "Conditional statements allow a program to make decisions depending on whether a condition is True or False."),
+            ("if, elif, and else",
+             "if checks the first condition.\nelif checks another condition when the earlier one is False.\nelse runs when all previous conditions are False."),
+            ("Comparison Operators",
+             "== Equal to\n!= Not equal to\n> Greater than\n< Less than\n>= Greater than or equal to\n<= Less than or equal to"),
+            ("Example",
+             'grade = 90\nif grade >= 90:\n    print("Excellent")\nelif grade >= 75:\n    print("Passed")\nelse:\n    print("Failed")')
+        ]
+    },
+    10: {
+        "title": "Logical Operators",
+        "subtitle": "Combine or reverse conditions.",
+        "sections": [
+            ("AND",
+             "and returns True only when BOTH conditions are True."),
+            ("OR",
+             "or returns True when AT LEAST ONE condition is True."),
+            ("NOT",
+             "not reverses a Boolean value. True becomes False, and False becomes True."),
+            ("Example",
+             "age = 18\nhas_id = True\n\nif age >= 18 and has_id:\n    print('Access granted')\nelse:\n    print('Access denied')"),
+            ("Remember",
+             "Logical operators are useful when a program needs to check more than one condition.")
+        ]
+    },
+    11: {
+        "title": "Iterations and Loops",
+        "subtitle": "Repeat instructions efficiently.",
+        "sections": [
+            ("What are Loops?",
+             "Loops repeat a block of code while a condition is satisfied or for a specific number of times."),
+            ("for Loop",
+             "A for loop is commonly used when you know how many times you want to repeat an action.\n\nfor number in range(1, 6):\n    print(number)\n\nOutput: 1 2 3 4 5"),
+            ("while Loop",
+             "A while loop repeats as long as its condition is True.\n\ncount = 1\nwhile count <= 5:\n    print(count)\n    count += 1"),
+            ("break and continue",
+             "break immediately stops a loop.\ncontinue skips the current repetition and moves to the next one."),
+            ("Remember",
+             "Make sure a while loop can eventually become False to avoid an infinite loop.")
+        ]
+    }
+}
+
+quiz_questions = [
+    ("What are the four basic functions of a computer?",
+     ["Input, Process, Output, Storage", "Save, Delete, Copy, Paste", "Open, Close, Print, Scan", "Start, Stop, Pause, Exit"], "A"),
+    ("What is indentation used for in Python?",
+     ["To change variable values", "To organize blocks of code", "To display pictures", "To save a file"], "B"),
+    ("Which function displays information on the screen?",
+     ["input()", "type()", "print()", "int()"], "C"),
+    ("Which symbol is used for a single-line comment?",
+     ["//", "#", "**", "@"], "B"),
+    ("What is the main purpose of a variable?",
+     ["To stop a program", "To store data", "To repeat code", "To compare values"], "B"),
+    ("What is the data type of 99.50?",
+     ["int", "str", "bool", "float"], "D"),
+    ("What is the result of 10 % 3?",
+     ["3", "1", "0", "10"], "B"),
+    ("Which function receives information from the user?",
+     ["print()", "input()", "range()", "type()"], "B"),
+    ("Which statement runs when the if and elif conditions are False?",
+     ["for", "while", "else", "break"], "C"),
+    ("Which logical operator requires both conditions to be True?",
+     ["or", "not", "and", "in"], "C"),
+    ("What is the result of 2 ** 3?",
+     ["5", "6", "8", "9"], "C"),
+    ("What values are produced by range(1, 6)?",
+     ["1, 2, 3, 4, 5", "1, 2, 3, 4, 5, 6", "0, 1, 2, 3, 4, 5", "2, 3, 4, 5, 6"], "A"),
+    ("Which data type represents True or False?",
+     ["int", "float", "str", "bool"], "D"),
+    ("What does break do inside a loop?",
+     ["Skips one repetition", "Stops the loop immediately", "Starts the loop again", "Pauses the computer"], "B"),
+    ("When does a while loop continue running?",
+     ["When its condition is True", "Only when its condition is False", "Only once", "When the program is closed"], "A")
+]
+
+
+class CodeQuestApp:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("CODE QUEST | Interactive Learning Portal")
+        self.root.geometry("1180x760")
+        self.root.minsize(900, 620)
+        self.root.configure(bg=BG)
+
+        self.username = ""
+        self.password = ""
+        self.completed = set()
+        self.current_page = None
+        self.quiz_index = 0
+        self.quiz_score = 0
+        self.quiz_answers = []
+        self.selected_answer = tk.StringVar(value="")
+
+        self.show_register()
+
+    def clear(self):
+        for widget in self.root.winfo_children():
+            widget.destroy()
+
+    def make_label(self, parent, text, size=12, color=WHITE, bold=False, **kwargs):
+        return tk.Label(
+            parent, text=text, bg=kwargs.pop("bg", parent.cget("bg")),
+            fg=color, font=("Segoe UI", size, "bold" if bold else "normal"),
+            justify=kwargs.pop("justify", "left"), wraplength=kwargs.pop("wraplength", 800),
+            **kwargs
+        )
+
+    def make_button(self, parent, text, command, primary=True, width=None):
+        bg = TEAL if primary else PANEL_LIGHT
+        fg = DARK if primary else WHITE
+        return tk.Button(
+            parent, text=text, command=command, bg=bg, fg=fg,
+            activebackground=LIME if primary else "#20545E",
+            activeforeground=DARK if primary else WHITE,
+            relief="flat", bd=0, cursor="hand2",
+            font=("Segoe UI", 10, "bold"), padx=18, pady=11,
+            width=width
+        )
+
+    def header(self, parent, small=False):
+        self.make_label(parent, "CQ", 28 if not small else 20, TEAL, True).pack(pady=(0, 2))
+        self.make_label(parent, "CODE QUEST", 22 if not small else 17, WHITE, True).pack()
+        self.make_label(parent, "INTERACTIVE LEARNING PORTAL", 9, MUTED, True).pack(pady=(2, 12))
+
+    def entry_field(self, parent, label, show=None):
+        self.make_label(parent, label, 9, TEAL, True).pack(anchor="w", pady=(10, 5))
+        entry = tk.Entry(
+            parent, font=("Segoe UI", 12), bg="#F2F7F7", fg="#152B30",
+            insertbackground="#152B30", relief="flat", show=show
+        )
+        entry.pack(fill="x", ipady=10)
+        return entry
+
+    def show_register(self):
+        self.clear()
+        outer = tk.Frame(self.root, bg=BG)
+        outer.pack(expand=True)
+        self.header(outer)
+
+        card = tk.Frame(outer, bg=PANEL, padx=28, pady=24,
+                        highlightbackground="#42616A", highlightthickness=1)
+        card.pack()
+
+        self.make_label(card, "CREATE YOUR ACCOUNT", 16, LIME, True, bg=PANEL).pack(anchor="w")
+        self.make_label(card, "Start your journey. Learn Python one lesson at a time.",
+                        9, MUTED, bg=PANEL).pack(anchor="w", pady=(7, 12))
+
+        self.reg_user = self.entry_field(card, "USERNAME")
+        self.reg_pass = self.entry_field(card, "PASSWORD", "•")
+        self.reg_confirm = self.entry_field(card, "CONFIRM PASSWORD", "•")
+
+        self.make_button(card, "CREATE ACCOUNT   →", self.register, True).pack(fill="x", pady=(18, 0))
+        self.make_button(outer, "Already have an account? Log in", self.show_login, False).pack(pady=12)
+        self.make_label(outer, "A focused space for curious minds.", 9, MUTED).pack(pady=5)
+
+    def register(self):
+        username = self.reg_user.get().strip()
+        password = self.reg_pass.get()
+        confirm = self.reg_confirm.get()
+
+        if not username or not password or not confirm:
+            messagebox.showwarning("Missing information", "Please complete all fields.")
+            return
+        if password != confirm:
+            messagebox.showerror("Password mismatch", "Your passwords do not match.")
+            return
+
+        self.username = username
+        self.password = password
+        messagebox.showinfo("Account created", "Your account was created successfully!")
+        self.show_login()
+
+    def show_login(self):
+        self.clear()
+        outer = tk.Frame(self.root, bg=BG)
+        outer.pack(expand=True)
+        self.header(outer)
+
+        card = tk.Frame(outer, bg=PANEL, padx=30, pady=28,
+                        highlightbackground="#42616A", highlightthickness=1)
+        card.pack()
+
+        self.make_label(card, "WELCOME BACK", 16, LIME, True, bg=PANEL).pack(anchor="w")
+        self.make_label(card, "Log in to continue learning.", 9, MUTED, bg=PANEL).pack(anchor="w", pady=(7, 12))
+
+        self.login_user = self.entry_field(card, "USERNAME")
+        self.login_pass = self.entry_field(card, "PASSWORD", "•")
+        self.make_button(card, "LOG IN   →", self.login, True).pack(fill="x", pady=(20, 0))
+        self.make_button(outer, "Create a new account", self.show_register, False).pack(pady=12)
+
+    def login(self):
+        if self.login_user.get().strip() == self.username and self.login_pass.get() == self.password:
+            self.show_dashboard()
+        else:
+            messagebox.showerror("Login failed", "Incorrect username or password.")
+
+    def app_shell(self, title, subtitle=""):
+        self.clear()
+        shell = tk.Frame(self.root, bg=BG)
+        shell.pack(fill="both", expand=True)
+
+        sidebar = tk.Frame(shell, bg="#0B2831", width=225)
+        sidebar.pack(side="left", fill="y")
+        sidebar.pack_propagate(False)
+
+        self.make_label(sidebar, "CQ", 27, TEAL, True, bg="#0B2831").pack(pady=(24, 0))
+        self.make_label(sidebar, "CODE QUEST", 15, WHITE, True, bg="#0B2831").pack()
+        self.make_label(sidebar, "LEARNING PORTAL", 8, MUTED, True, bg="#0B2831").pack(pady=(0, 25))
+
+        nav_items = [
+            ("⌂   Dashboard", self.show_dashboard),
+            ("▤   Explore Lessons", self.show_lessons),
+            ("◷   My Progress", self.show_progress),
+            ("☷   Discuss All Topics", self.discuss_all),
+            ("✓   Take the Quiz", self.start_quiz),
+        ]
+        for label, command in nav_items:
+            b = tk.Button(sidebar, text=label, command=command, anchor="w",
+                          bg="#0B2831", fg=WHITE, activebackground=PANEL_LIGHT,
+                          activeforeground=TEAL, relief="flat", bd=0,
+                          font=("Segoe UI", 10), padx=20, pady=13, cursor="hand2")
+            b.pack(fill="x")
+
+        tk.Frame(sidebar, bg="#25434B", height=1).pack(fill="x", padx=15, pady=15)
+        self.make_label(sidebar, "SIGNED IN AS", 8, MUTED, True, bg="#0B2831").pack(anchor="w", padx=20)
+        self.make_label(sidebar, self.username, 11, TEAL, True, bg="#0B2831").pack(anchor="w", padx=20, pady=(4, 12))
+        tk.Button(sidebar, text="↪   Logout", command=self.logout, anchor="w",
+                  bg="#0B2831", fg=RED, activebackground="#183943",
+                  activeforeground=RED, relief="flat", bd=0,
+                  font=("Segoe UI", 10), padx=20, pady=12, cursor="hand2").pack(fill="x", side="bottom")
+
+        content = tk.Frame(shell, bg=BG, padx=30, pady=24)
+        content.pack(side="left", fill="both", expand=True)
+
+        top = tk.Frame(content, bg=BG)
+        top.pack(fill="x", pady=(0, 18))
+        self.make_label(top, title, 22, WHITE, True, bg=BG).pack(anchor="w")
+        if subtitle:
+            self.make_label(top, subtitle, 10, MUTED, bg=BG).pack(anchor="w", pady=(4, 0))
+
+        body = tk.Frame(content, bg=BG)
+        body.pack(fill="both", expand=True)
+        return body
+
+    def show_dashboard(self):
+        body = self.app_shell("Dashboard", "Your personal space to learn and practice Python.")
+        completed_count = len(self.completed)
+        progress = completed_count / len(lessons) * 100
+
+        welcome = tk.Frame(body, bg=PANEL, padx=24, pady=22)
+        welcome.pack(fill="x", pady=(0, 18))
+        self.make_label(welcome, f"Welcome, {self.username}!", 20, LIME, True, bg=PANEL).pack(anchor="w")
+        self.make_label(welcome, "Keep exploring. Every lesson brings you one step closer to mastering Python.",
+                        10, MUTED, bg=PANEL).pack(anchor="w", pady=(6, 0))
+
+        stats = tk.Frame(body, bg=BG)
+        stats.pack(fill="x", pady=(0, 18))
+        self.stat_card(stats, "TOTAL LESSONS", "11", "Topics to explore").pack(side="left", fill="both", expand=True, padx=(0, 8))
+        self.stat_card(stats, "COMPLETED", str(completed_count), "Lessons finished").pack(side="left", fill="both", expand=True, padx=8)
+        self.stat_card(stats, "YOUR PROGRESS", f"{progress:.0f}%", "Learning journey").pack(side="left", fill="both", expand=True, padx=(8, 0))
+
+        quick = tk.Frame(body, bg=PANEL, padx=20, pady=18)
+        quick.pack(fill="x", pady=(0, 15))
+        self.make_label(quick, "QUICK ACTI
