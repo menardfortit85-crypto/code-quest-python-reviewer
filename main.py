@@ -1,151 +1,463 @@
-import tkinter as tk
-from tkinter import messagebox
 
-# CODE QUEST - Python Learning Portal
-# A beginner-friendly reviewer made with Tkinter.
+print("==========================================")
+print("                 CODE QUEST")
+print("          INTERACTIVE LEARNING PORTAL")
+print("==========================================")
 
-BG = "#F4F7FB"
-WHITE = "#FFFFFF"
-NAVY = "#172B4D"
-BLUE = "#3478F6"
-LIGHT_BLUE = "#EAF1FF"
-DARK = "#26364A"
-GRAY = "#718096"
-GREEN = "#27AE60"
 
-root = tk.Tk()
-root.title("Code Quest | Python Learning Portal")
-root.geometry("1050x700")
-root.minsize(900, 600)
-root.configure(bg=BG)
+print("\n            CREATE ACCOUNT")
+print("====================================")
+registered_name = input("Create username: ")
 
-registered_name = ""
-registered_password = ""
-completed = []
-current_question = 0
-score = 0
-selected_answer = tk.StringVar()
+while True:
+    registered_password = input("Create password: ")
+    confirm_password = input("Confirm password: ")
 
-lessons = [
-    {
-        "title": "Introduction to Computing",
-        "description": "Understand how a computer receives and handles information.",
-        "content": """Computing is the process of using a computer to work with information.
+    if registered_password == confirm_password:
+        print("\nAccount registered successfully!")
+        break
+    else:
+        print("\nPasswords do not match!")
+        print("Please try again.\n")
 
-The four basic operations are:
-• Input - data entered into the computer.
-• Processing - the computer works on the data.
-• Output - the result shown to the user.
-• Storage - saving data for later use.
 
-Example: When you type a message, the keyboard is input, the computer processes it, the screen displays output, and saving the message is storage."""
-    },
-    {
-        "title": "Python Basic Syntax",
-        "description": "Learn the basic rules for writing Python instructions.",
-        "content": """Syntax refers to the rules used to write a program. Python uses indentation (spaces at the beginning of a line) to group instructions.
+print("\n==========================================")
+print("                 STUDENT LOGIN")
+print("==========================================")
 
-Example:
-if 10 > 5:
-    print("Ten is greater")
+while True:
 
-The print statement is indented because it belongs inside the if statement. Incorrect indentation can cause an error."""
-    },
-    {
-        "title": "Printing Output",
-        "description": "Display words, numbers, and results on the screen.",
-        "content": """The print() function displays information on the screen.
+    name = input("Enter username: ")
+    password = input("Enter password: ")
 
-Example:
-print("Hello, World!")
-print(25)
+    if name == registered_name and password == registered_password:
 
-Expected output:
-Hello, World!
-25
+        print("\n==========================================")
+        print("              LOGIN SUCCESSFUL")
+        print("==========================================")
+        print("Welcome to CODE QUEST,", name)
+        break
 
-Text is usually placed inside quotation marks. Numbers can be printed without quotation marks."""
-    },
-    {
-        "title": "Python Comments",
-        "description": "Add notes to your code to make it easier to understand.",
-        "content": """Comments are notes in a program. Python ignores comments when it runs the code.
+    else:
+        print("\nIncorrect username or password!")
+        print("Please try again.\n")
 
-Use the # symbol for a single-line comment.
 
-Example:
-# This is a comment
-print("Welcome to Python")
+lessons = {
 
-Comments help programmers explain what a section of code does."""
-    },
-    {
-        "title": "Variables, Constants and Database",
-        "description": "Store information and understand how data can be organized.",
-        "content": """A variable is a named place used to store a value.
+1: """
+==========================================
+       1. INTRODUCTION TO COMPUTING
+==========================================
 
-Example:
-student_name = "Alex"
+DEFINITION:
+Computing is the process of using computers
+to solve problems, process information,
+and perform different tasks.
+
+FOUR BASIC FUNCTIONS:
+
+1. INPUT
+   Data entered into a computer.
+
+2. PROCESS
+   The computer works on the data.
+
+3. OUTPUT
+   The result produced by the computer.
+
+4. STORAGE
+   Saving information for future use.
+
+EXAMPLE:
+A calculator receives numbers, processes
+them, and displays the answer.
+
+PYTHON EXAMPLE:
+
+number1 = 10
+number2 = 5
+answer = number1 + number2
+
+print(answer)
+
+OUTPUT:
+15
+
+IMPORTANCE:
+- Makes work faster.
+- Helps people communicate.
+- Stores information.
+- Solves different problems.
+
+REMEMBER:
+A computer accepts input, processes data,
+produces output, and stores information.
+""",
+
+2: """
+==========================================
+             2. PYTHON BASIC SYNTAX
+==========================================
+
+DEFINITION:
+Python syntax refers to the rules and
+structure used when writing Python programs.
+
+IMPORTANT CONCEPTS:
+
+1. KEYWORDS
+   Reserved words such as if, else,
+   while, and for.
+
+2. IDENTIFIERS
+   Names given to variables and functions.
+
+3. INDENTATION
+   Spaces used to organize blocks of code.
+
+4. STATEMENTS
+   Instructions written in a program.
+
+5. CASE SENSITIVITY
+   Uppercase and lowercase letters
+   are treated differently.
+
+EXAMPLE:
+
+name = "Menard"
+
+if name == "Menard":
+    print("Welcome!")
+
+OUTPUT:
+Welcome!
+
+REMEMBER:
+Correct syntax helps Python understand
+your instructions.
+""",
+
+3: """
+==========================================
+              3. PRINTING OUTPUT
+==========================================
+
+DEFINITION:
+Printing output means displaying
+information on the computer screen.
+
+Python uses the print() function.
+
+USES:
+- Displaying text.
+- Displaying numbers.
+- Displaying variables.
+- Showing calculations.
+
+EXAMPLE 1:
+
+print("Hello World!")
+
+OUTPUT:
+Hello World!
+
+EXAMPLE 2:
+
+name = "Menard"
 age = 18
 
-A constant is a value intended not to change. Python programmers commonly write constant names in uppercase.
+print(name)
+print(age)
 
-Example:
+OUTPUT:
+Menard
+18
+
+REMEMBER:
+Text needs quotation marks, while numbers
+can be printed without quotation marks.
+""",
+
+4: """
+==========================================
+              4. PYTHON COMMENTS
+==========================================
+
+DEFINITION:
+Comments are notes written inside a program
+to explain what the code does.
+
+Python ignores comments during execution.
+
+TYPES:
+
+1. SINGLE-LINE COMMENT
+   Uses the # symbol.
+
+   Example:
+   # This is a comment
+
+2. MULTI-LINE NOTES
+   Can be written using triple quotation
+   marks.
+
+EXAMPLE:
+
+# Display a welcome message
+print("Welcome to Code Quest!")
+
+OUTPUT:
+Welcome to Code Quest!
+
+IMPORTANCE:
+- Explains complicated code.
+- Helps programmers understand programs.
+- Makes code easier to read.
+
+REMEMBER:
+Comments help explain and organize code.
+""",
+
+5: """
+==========================================
+     5. VARIABLES, CONSTANTS AND DATABASE
+==========================================
+
+A. VARIABLES
+
+Variables are names used to store data.
+Their values can change.
+
+EXAMPLE:
+
+name = "Menard"
+age = 18
+
+print(name)
+print(age)
+
+OUTPUT:
+Menard
+18
+
+B. CONSTANTS
+
+Constants represent values programmers
+intend to keep unchanged.
+
+Python conventionally uses uppercase names.
+
+EXAMPLE:
+
 PI = 3.14159
 
-A database is an organized collection of information that can be stored, searched, and managed."""
-    },
-    {
-        "title": "Basic Data Types in Python",
-        "description": "Identify the common kinds of values used in Python.",
-        "content": """Common Python data types include:
+C. DATABASE
 
-• str - text, such as "Hello"
-• int - whole numbers, such as 15
-• float - decimal numbers, such as 3.14
-• bool - True or False values
+A database is an organized collection
+of information.
 
-Example:
-name = "Mia"       # str
-age = 16           # int
-height = 1.62      # float
-is_student = True # bool
+EXAMPLES:
+- Student records
+- Grades
+- Attendance
+- Personal information
 
-The type of a value affects how Python works with it."""
-    },
-    {
-        "title": "Arithmetic Operators and Expression",
-        "description": "Perform calculations using Python operators.",
-        "content": """Arithmetic operators perform mathematical operations.
+REAL-LIFE APPLICATION:
+Schools use databases to manage
+student information.
 
-+ addition       8 + 2 = 10
-- subtraction    8 - 2 = 6
-* multiplication 8 * 2 = 16
-/ division       8 / 2 = 4.0
-// floor division 17 // 5 = 3
-% modulus        17 % 5 = 2
-** exponent      2 ** 3 = 8
+REMEMBER:
+Variables store values, constants represent
+unchanged values, and databases organize data.
+""",
 
-An expression combines values and operators to produce a result."""
-    },
-    {
-        "title": "Basic Input and Output",
-        "description": "Ask the user for information and display a response.",
-        "content": """The input() function gets information from the user. The print() function displays information.
+6: """
+==========================================
+         6. BASIC DATA TYPES IN PYTHON
+==========================================
 
-Example:
+DEFINITION:
+Data types identify the kind of information
+stored in a variable.
+
+FOUR BASIC DATA TYPES:
+
+1. INTEGER (int)
+   Whole numbers.
+   Example: age = 18
+
+2. FLOAT (float)
+   Decimal numbers.
+   Example: price = 99.50
+
+3. STRING (str)
+   Text and characters.
+   Example: name = "Menard"
+
+4. BOOLEAN (bool)
+   True or False.
+   Example: passed = True
+
+PYTHON EXAMPLE:
+
+age = 18
+price = 99.50
+name = "Menard"
+passed = True
+
+print(type(age))
+print(type(price))
+print(type(name))
+print(type(passed))
+
+OUTPUT:
+
+<class 'int'>
+<class 'float'>
+<class 'str'>
+<class 'bool'>
+
+TYPE CONVERSION:
+
+int() - Converts to an integer.
+float() - Converts to a decimal.
+str() - Converts to text.
+bool() - Converts to Boolean.
+
+REMEMBER:
+Data types identify the kind of data
+used in a program.
+""",
+
+7: """
+==========================================
+    7. ARITHMETIC OPERATORS AND EXPRESSION
+==========================================
+
+DEFINITION:
+Arithmetic operators perform mathematical
+calculations.
+
+SEVEN OPERATORS:
+
+1. + Addition
+2. - Subtraction
+3. * Multiplication
+4. / Division
+5. % Modulus
+6. // Floor Division
+7. ** Exponentiation
+
+EXAMPLE:
+
+a = 10
+b = 5
+
+print(a + b)
+print(a - b)
+print(a * b)
+print(a / b)
+print(a % b)
+print(a // b)
+print(2 ** 3)
+
+OUTPUT:
+
+15
+5
+50
+2.0
+0
+2
+8
+
+EXPRESSION:
+An expression combines values, variables,
+and operators to produce a result.
+
+REMEMBER:
+Arithmetic operators help computers
+perform mathematical calculations.
+""",
+
+8: """
+==========================================
+         8. BASIC INPUT AND OUTPUT
+==========================================
+
+DEFINITION:
+Input and output allow users to interact
+with computer programs.
+
+INPUT:
+Information entered by the user.
+
+Python uses input() to receive information.
+
+OUTPUT:
+Information displayed on the screen.
+
+Python uses print() to display information.
+
+EXAMPLE:
+
 name = input("Enter your name: ")
-print("Hello,", name)
 
-When input() is used, the program waits for the user to type a response. The entered value is received as text (a string). Use int() or float() when a number is needed."""
-    },
-    {
-        "title": "Conditional Statements",
-        "description": "Make decisions using if, elif, and else.",
-        "content": """Conditional statements let a program choose what to do based on a condition.
+print("Hello", name)
 
-Example:
-grade = 85
+OUTPUT:
+
+Enter your name: Menard
+Hello Menard
+
+NUMERIC INPUT:
+
+age = int(input("Enter age: "))
+
+print("Your age is", age)
+
+OUTPUT:
+
+Enter age: 18
+Your age is 18
+
+IMPORTANT FUNCTIONS:
+
+input() - Receives information.
+print() - Displays information.
+int() - Converts to a whole number.
+float() - Converts to a decimal.
+
+REMEMBER:
+Input receives data and output displays it.
+""",
+
+9: """
+==========================================
+          9. CONDITIONAL STATEMENTS
+==========================================
+
+DEFINITION:
+Conditional statements allow programs
+to make decisions based on conditions.
+
+THREE TYPES:
+
+1. IF
+   Executes code when a condition is True.
+
+2. ELIF
+   Checks another condition if the
+   previous condition is False.
+
+3. ELSE
+   Executes when previous conditions
+   are False.
+
+EXAMPLE:
+
+grade = 90
 
 if grade >= 90:
     print("Excellent")
@@ -154,363 +466,533 @@ elif grade >= 75:
 else:
     print("Failed")
 
-Python checks the if condition first. If it is false, it checks elif. The else block runs when none of the earlier conditions are true."""
-    },
-    {
-        "title": "Logical Operators",
-        "description": "Combine or reverse conditions in a program.",
-        "content": """Logical operators are used to combine conditions.
+OUTPUT:
+Excellent
 
-• and - True only when both conditions are True.
-• or - True when at least one condition is True.
-• not - reverses a Boolean result.
+COMPARISON OPERATORS:
 
-Example:
+== Equal to
+!= Not equal to
+> Greater than
+< Less than
+>= Greater than or equal to
+<= Less than or equal to
+
+REMEMBER:
+Conditional statements help programs
+make decisions.
+""",
+
+10: """
+==========================================
+             10. LOGICAL OPERATORS
+==========================================
+
+DEFINITION:
+Logical operators combine or reverse
+conditions in a Python program.
+
+THREE TYPES:
+
+1. AND
+   Both conditions must be True.
+
+2. OR
+   At least one condition must be True.
+
+3. NOT
+   Reverses the result.
+
+EXAMPLE - AND:
+
+print(10 > 5 and 8 > 3)
+
+OUTPUT:
+True
+
+EXAMPLE - OR:
+
+print(10 < 5 or 8 > 3)
+
+OUTPUT:
+True
+
+EXAMPLE - NOT:
+
+print(not(10 > 5))
+
+OUTPUT:
+False
+
+REAL-LIFE EXAMPLE:
+
 age = 20
 has_id = True
 
 if age >= 18 and has_id:
-    print("You may enter")
+    print("Access granted")
 
-Both conditions must be true for the example to display the message."""
-    },
-    {
-        "title": "Iterations and Loops",
-        "description": "Repeat instructions using for and while loops.",
-        "content": """Loops repeat a block of code.
+OUTPUT:
+Access granted
 
-A for loop is useful when going through a sequence or a known range.
+REMEMBER:
+AND requires both, OR requires one,
+and NOT reverses a condition.
+""",
 
-for number in range(1, 4):
+11: """
+==========================================
+           11. ITERATIONS AND LOOPS
+==========================================
+
+DEFINITION:
+Loops repeat instructions automatically
+without writing the same code repeatedly.
+
+TWO MAIN TYPES:
+
+1. FOR LOOP
+   Repeats code over a sequence or range.
+
+EXAMPLE:
+
+for number in range(1, 6):
     print(number)
 
-Output:
+OUTPUT:
+
 1
 2
 3
+4
+5
 
-A while loop repeats as long as its condition is True.
+2. WHILE LOOP
+   Repeats while a condition is True.
+
+EXAMPLE:
 
 count = 1
-while count <= 3:
+
+while count <= 5:
     print(count)
     count += 1
 
-Remember to update a while-loop condition so the loop can eventually stop."""
+OUTPUT:
+
+1
+2
+3
+4
+5
+
+OTHER LOOP STATEMENTS:
+
+BREAK:
+Stops the loop immediately.
+
+CONTINUE:
+Skips the current iteration.
+
+REMEMBER:
+Loops make programs more efficient
+by repeating instructions automatically.
+"""
+
+}
+
+
+# LEARNING PROGRESS
+
+completed = []
+
+
+# QUIZ QUESTIONS
+
+quiz_questions = [
+
+    {
+        "question": "1. What are the four basic functions of a computer?",
+        "choices": [
+            "A. Input, Process, Output, Storage",
+            "B. Print, Scan, Copy, Delete",
+            "C. Open, Close, Save, Run",
+            "D. Keyboard, Mouse, Monitor, CPU"
+        ],
+        "answer": "A"
+    },
+
+    {
+        "question": "2. What is indentation in Python?",
+        "choices": [
+            "A. A type of variable",
+            "B. Spaces used to organize blocks of code",
+            "C. A mathematical operator",
+            "D. A command for displaying output"
+        ],
+        "answer": "B"
+    },
+
+    {
+        "question": "3. Which Python function displays information on the screen?",
+        "choices": [
+            "A. input()",
+            "B. type()",
+            "C. print()",
+            "D. int()"
+        ],
+        "answer": "C"
+    },
+
+    {
+        "question": "4. Which symbol is used for a single-line comment?",
+        "choices": [
+            "A. //",
+            "B. #",
+            "C. **",
+            "D. @"
+        ],
+        "answer": "B"
+    },
+
+    {
+        "question": "5. What is the main purpose of a variable?",
+        "choices": [
+            "A. To display pictures",
+            "B. To store data",
+            "C. To stop a program",
+            "D. To create comments"
+        ],
+        "answer": "B"
+    },
+
+    {
+        "question": "6. What data type is the value 99.50?",
+        "choices": [
+            "A. Integer",
+            "B. String",
+            "C. Boolean",
+            "D. Float"
+        ],
+        "answer": "D"
+    },
+
+    {
+        "question": "7. What is the result of 10 % 3?",
+        "choices": [
+            "A. 3",
+            "B. 1",
+            "C. 0",
+            "D. 10"
+        ],
+        "answer": "B"
+    },
+
+    {
+        "question": "8. Which function receives information from the user?",
+        "choices": [
+            "A. print()",
+            "B. input()",
+            "C. type()",
+            "D. bool()"
+        ],
+        "answer": "B"
+    },
+
+    {
+        "question": "9. Which statement runs when the if and elif conditions are False?",
+        "choices": [
+            "A. for",
+            "B. while",
+            "C. else",
+            "D. input"
+        ],
+        "answer": "C"
+    },
+
+    {
+        "question": "10. Which logical operator requires BOTH conditions to be True?",
+        "choices": [
+            "A. OR",
+            "B. NOT",
+            "C. AND",
+            "D. ELSE"
+        ],
+        "answer": "C"
+    },
+
+    {
+        "question": "11. What is the output of print(2 ** 3)?",
+        "choices": [
+            "A. 5",
+            "B. 6",
+            "C. 8",
+            "D. 9"
+        ],
+        "answer": "C"
+    },
+
+    {
+        "question": "12. What numbers are produced by range(1, 6)?",
+        "choices": [
+            "A. 1, 2, 3, 4, 5",
+            "B. 1, 2, 3, 4, 5, 6",
+            "C. 0, 1, 2, 3, 4, 5",
+            "D. 6, 5, 4, 3, 2, 1"
+        ],
+        "answer": "A"
+    },
+
+    {
+        "question": "13. Which data type represents True or False?",
+        "choices": [
+            "A. int",
+            "B. float",
+            "C. str",
+            "D. bool"
+        ],
+        "answer": "D"
+    },
+
+    {
+        "question": "14. What does the break statement do inside a loop?",
+        "choices": [
+            "A. Repeats the loop",
+            "B. Stops the loop immediately",
+            "C. Skips all variables",
+            "D. Displays a message"
+        ],
+        "answer": "B"
+    },
+
+    {
+        "question": "15. When does a while loop continue executing?",
+        "choices": [
+            "A. When its condition is True",
+            "B. When its condition is False",
+            "C. Only when the user logs in",
+            "D. Only once"
+        ],
+        "answer": "A"
     }
+
 ]
 
-questions = [
-    ("Which computer operation is responsible for displaying the result to the user?", ["Input", "Processing", "Output", "Storage"], 2),
-    ("Which code has correct indentation in Python?", ["if 5 > 2: print('Yes')", "if 5 > 2:\n    print('Yes')", "if 5 > 2:\nprint('Yes')", "print: if 5 > 2"], 1),
-    ("What is the output of print('Python Programming')?", ["Python", "Programming", "The literal code", "Python Programming"], 3),
-    ("Which symbol creates a single-line comment in Python?", ["//", "#", "**", "@"], 1),
-    ("What value is stored in the variable age?  age = 18", ["age", "18", "'age'", "Nothing"], 1),
-    ("Which data type is used for 3.14?", ["Integer", "String", "Float", "Boolean"], 2),
-    ("What is the result of print(10 % 3)?", ["3", "1", "0", "10"], 1),
-    ("Which Python function allows a user to enter information?", ["print()", "input()", "output()", "display()"], 1),
-    ("Which statement runs when the if condition is false and no other condition matches?", ["if", "input", "else", "print"], 2),
-    ("Which logical operator requires BOTH conditions to be True?", ["or", "not", "and", "else"], 2),
-    ("What does this loop display? for x in range(1, 4): print(x)", ["1 2 3", "1 2 3 4", "0 1 2 3", "4 3 2 1"], 0),
-    ("When does a while loop continue running?", ["When its condition is True", "When its condition is False", "Only once", "Only after the program closes"], 0),
-    ("What is the result of print(17 // 5)?", ["3.4", "2", "3", "5"], 2),
-    ("Which of these is a Boolean value?", ["'True'", "100", "2.5", "False"], 3),
-    ("What is displayed when grade = 85 and the if/elif/else example from the lesson runs?", ["Excellent", "Passed", "Failed", "No output"], 1)
-]
 
-def clear_screen():
-    for widget in root.winfo_children():
-        widget.destroy()
+# QUIZ SYSTEM
 
-def heading(parent, title, subtitle=""):
-    tk.Label(parent, text=title, bg=BG, fg=NAVY,
-             font=("Arial", 23, "bold")).pack(anchor="w", pady=(0, 5))
-    if subtitle:
-        tk.Label(parent, text=subtitle, bg=BG, fg=GRAY,
-                 font=("Arial", 10)).pack(anchor="w", pady=(0, 18))
+def take_quiz():
 
-def make_button(parent, text, command, color=BLUE, width=22):
-    return tk.Button(parent, text=text, command=command, bg=color, fg=WHITE,
-                     activebackground=color, activeforeground=WHITE,
-                     relief="flat", cursor="hand2", font=("Arial", 10, "bold"),
-                     padx=12, pady=9, width=width)
-
-def make_card(parent, title, description, command, number=None):
-    card = tk.Frame(parent, bg=WHITE, highlightbackground="#E1E8F0",
-                    highlightthickness=1, padx=16, pady=14)
-    card.pack(fill="x", pady=6)
-    label = f"{number}. {title}" if number else title
-    tk.Label(card, text=label, bg=WHITE, fg=NAVY,
-             font=("Arial", 12, "bold")).pack(anchor="w")
-    tk.Label(card, text=description, bg=WHITE, fg=GRAY,
-             font=("Arial", 9), wraplength=700, justify="left").pack(anchor="w", pady=5)
-    tk.Button(card, text="Open lesson  →", command=command, bg=LIGHT_BLUE,
-              fg=BLUE, relief="flat", cursor="hand2",
-              font=("Arial", 9, "bold"), padx=10, pady=6).pack(anchor="e")
-    return card
-
-def registration_screen():
-    clear_screen()
-    outer = tk.Frame(root, bg=BG)
-    outer.pack(expand=True)
-    panel = tk.Frame(outer, bg=WHITE, padx=42, pady=35,
-                     highlightbackground="#E1E8F0", highlightthickness=1)
-    panel.pack()
-    tk.Label(panel, text="CODE QUEST", bg=WHITE, fg=BLUE,
-             font=("Arial", 25, "bold")).pack(pady=(0, 5))
-    tk.Label(panel, text="Create your learning account", bg=WHITE, fg=GRAY,
-             font=("Arial", 10)).pack(pady=(0, 22))
-    tk.Label(panel, text="Username", bg=WHITE, fg=DARK).pack(anchor="w")
-    username = tk.Entry(panel, font=("Arial", 11), width=32, relief="solid", bd=1)
-    username.pack(pady=(5, 14), ipady=7)
-    tk.Label(panel, text="Password", bg=WHITE, fg=DARK).pack(anchor="w")
-    password = tk.Entry(panel, show="*", font=("Arial", 11), width=32, relief="solid", bd=1)
-    password.pack(pady=(5, 14), ipady=7)
-    tk.Label(panel, text="Confirm password", bg=WHITE, fg=DARK).pack(anchor="w")
-    confirm = tk.Entry(panel, show="*", font=("Arial", 11), width=32, relief="solid", bd=1)
-    confirm.pack(pady=(5, 20), ipady=7)
-
-    def register():
-        global registered_name, registered_password
-        name, pw, cpw = username.get().strip(), password.get(), confirm.get()
-        if not name or not pw or not cpw:
-            messagebox.showwarning("Missing details", "Please complete all fields.")
-        elif pw != cpw:
-            messagebox.showerror("Password mismatch", "Your passwords do not match.")
-        else:
-            registered_name, registered_password = name, pw
-            messagebox.showinfo("Account created", "Registration complete. You can now log in.")
-            login_screen()
-
-    make_button(panel, "Create Account", register, width=28).pack()
-    tk.Button(panel, text="Already registered? Log in", command=login_screen,
-              bg=WHITE, fg=BLUE, relief="flat", cursor="hand2").pack(pady=(12, 0))
-
-def login_screen():
-    clear_screen()
-    outer = tk.Frame(root, bg=BG)
-    outer.pack(expand=True)
-    panel = tk.Frame(outer, bg=WHITE, padx=42, pady=35,
-                     highlightbackground="#E1E8F0", highlightthickness=1)
-    panel.pack()
-    tk.Label(panel, text="Welcome Back", bg=WHITE, fg=NAVY,
-             font=("Arial", 23, "bold")).pack(pady=(0, 5))
-    tk.Label(panel, text="Log in to continue your Python journey", bg=WHITE,
-             fg=GRAY, font=("Arial", 10)).pack(pady=(0, 22))
-    tk.Label(panel, text="Username", bg=WHITE, fg=DARK).pack(anchor="w")
-    username = tk.Entry(panel, font=("Arial", 11), width=32, relief="solid", bd=1)
-    username.pack(pady=(5, 14), ipady=7)
-    tk.Label(panel, text="Password", bg=WHITE, fg=DARK).pack(anchor="w")
-    password = tk.Entry(panel, show="*", font=("Arial", 11), width=32, relief="solid", bd=1)
-    password.pack(pady=(5, 20), ipady=7)
-
-    def login():
-        if username.get().strip() == registered_name and password.get() == registered_password and registered_name:
-            dashboard()
-        else:
-            messagebox.showerror("Login failed", "Incorrect username or password. Register first if you do not have an account.")
-
-    make_button(panel, "Log In", login, width=28).pack()
-    tk.Button(panel, text="Create a new account", command=registration_screen,
-              bg=WHITE, fg=BLUE, relief="flat", cursor="hand2").pack(pady=(12, 0))
-
-def app_layout(page_title):
-    clear_screen()
-    sidebar = tk.Frame(root, bg=NAVY, width=220)
-    sidebar.pack(side="left", fill="y")
-    sidebar.pack_propagate(False)
-    tk.Label(sidebar, text="CODE QUEST", bg=NAVY, fg=WHITE,
-             font=("Arial", 19, "bold")).pack(anchor="w", padx=20, pady=(28, 3))
-    tk.Label(sidebar, text="PYTHON LEARNING PORTAL", bg=NAVY, fg="#B9C9E3",
-             font=("Arial", 8, "bold")).pack(anchor="w", padx=20, pady=(0, 25))
-    nav_items = [
-        ("Dashboard", dashboard),
-        ("Explore Lessons", explore_lessons),
-        ("My Learning Progress", learning_progress),
-        ("Discuss All Topics", discuss_all),
-        ("Take the Quiz", start_quiz)
-    ]
-    for label, action in nav_items:
-        tk.Button(sidebar, text=label, command=action, anchor="w",
-                  bg=NAVY, fg=WHITE, activebackground="#29446D",
-                  activeforeground=WHITE, relief="flat", cursor="hand2",
-                  font=("Arial", 10), padx=20, pady=12).pack(fill="x")
-    tk.Button(sidebar, text="Log Out", command=logout, anchor="w",
-              bg="#203958", fg="#FFD7D7", activebackground="#29446D",
-              relief="flat", cursor="hand2", font=("Arial", 10),
-              padx=20, pady=12).pack(side="bottom", fill="x", pady=18)
-    main = tk.Frame(root, bg=BG, padx=30, pady=26)
-    main.pack(side="left", fill="both", expand=True)
-    return main
-
-def dashboard():
-    main = app_layout("Dashboard")
-    heading(main, "Your Learning Dashboard", f"Welcome, {registered_name}! Keep learning one topic at a time.")
-    progress = len(set(completed))
-    card = tk.Frame(main, bg=WHITE, padx=20, pady=18)
-    card.pack(fill="x", pady=(0, 18))
-    tk.Label(card, text="YOUR PROGRESS", bg=WHITE, fg=GRAY,
-             font=("Arial", 9, "bold")).pack(anchor="w")
-    tk.Label(card, text=f"{progress} / 11 lessons completed", bg=WHITE,
-             fg=NAVY, font=("Arial", 21, "bold")).pack(anchor="w", pady=5)
-    bar = tk.Canvas(card, height=12, bg="#E8EDF5", highlightthickness=0)
-    bar.pack(fill="x", pady=(5, 0))
-    bar.update_idletasks()
-    width = max(bar.winfo_width(), 300)
-    bar.create_rectangle(0, 0, width * progress / 11, 12, fill=BLUE, outline="")
-    heading(main, "Continue Learning", "Choose what you want to do next.")
-    actions = [
-        ("Explore Lessons", "Read all 11 Python topics with examples.", explore_lessons),
-        ("Discuss All Topics", "Go through the lessons in order, one by one.", discuss_all),
-        ("Take the Quiz", "Answer 15 questions based on the lessons.", start_quiz),
-        ("My Learning Progress", "Check which topics you have completed.", learning_progress)
-    ]
-    for title, desc, command in actions:
-        make_card(main, title, desc, command)
-
-def explore_lessons():
-    main = app_layout("Explore Lessons")
-    heading(main, "Explore Lessons", "Select a topic to read its explanation and examples.")
-    canvas = tk.Canvas(main, bg=BG, highlightthickness=0)
-    scrollbar = tk.Scrollbar(main, orient="vertical", command=canvas.yview)
-    content = tk.Frame(canvas, bg=BG)
-    content.bind("<Configure>", lambda e: canvas.configure(scrollregion=canvas.bbox("all")))
-    canvas.create_window((0, 0), window=content, anchor="nw", width=760)
-    canvas.configure(yscrollcommand=scrollbar.set)
-    canvas.pack(side="left", fill="both", expand=True)
-    scrollbar.pack(side="right", fill="y")
-    for i, lesson in enumerate(lessons, 1):
-        make_card(content, lesson["title"], lesson["description"],
-                  lambda n=i: show_lesson(n), i)
-
-def show_lesson(number, back="explore"):
-    lesson = lessons[number - 1]
-    main = app_layout("Lesson")
-    heading(main, f"Lesson {number}: {lesson['title']}", lesson["description"])
-    completed.append(number)
-    panel = tk.Frame(main, bg=WHITE, padx=24, pady=22)
-    panel.pack(fill="both", expand=True)
-    text = tk.Text(panel, wrap="word", bg=WHITE, fg=DARK, relief="flat",
-                   font=("Arial", 11), padx=5, pady=5)
-    text.pack(fill="both", expand=True)
-    text.insert("1.0", lesson["content"])
-    text.configure(state="disabled")
-    buttons = tk.Frame(main, bg=BG)
-    buttons.pack(fill="x", pady=15)
-    make_button(buttons, "← Previous", lambda: show_lesson(max(1, number - 1)), color=NAVY).pack(side="left")
-    make_button(buttons, "Back to Lessons", explore_lessons, color=GRAY).pack(side="left", padx=8)
-    if number < 11:
-        make_button(buttons, "Next Lesson →", lambda: show_lesson(number + 1)).pack(side="right")
-    else:
-        make_button(buttons, "Finish", dashboard).pack(side="right")
-
-def learning_progress():
-    main = app_layout("My Learning Progress")
-    heading(main, "My Learning Progress", "Your completed topics are marked below.")
-    done = set(completed)
-    tk.Label(main, text=f"{len(done)} of 11 lessons completed",
-             bg=BG, fg=BLUE, font=("Arial", 17, "bold")).pack(anchor="w", pady=(0, 14))
-    for i, lesson in enumerate(lessons, 1):
-        status = "✓ Completed" if i in done else "Not yet completed"
-        color = GREEN if i in done else GRAY
-        row = tk.Frame(main, bg=WHITE, padx=14, pady=11)
-        row.pack(fill="x", pady=4)
-        tk.Label(row, text=f"{i}. {lesson['title']}", bg=WHITE, fg=NAVY,
-                 font=("Arial", 10, "bold")).pack(side="left")
-        tk.Label(row, text=status, bg=WHITE, fg=color,
-                 font=("Arial", 9, "bold")).pack(side="right")
-
-def discuss_all():
-    show_discussion(1)
-
-def show_discussion(number):
-    lesson = lessons[number - 1]
-    main = app_layout("Discuss All Topics")
-    heading(main, f"Topic {number} of 11", "Review each lesson in order.")
-    completed.append(number)
-    panel = tk.Frame(main, bg=WHITE, padx=24, pady=22)
-    panel.pack(fill="both", expand=True)
-    tk.Label(panel, text=lesson["title"], bg=WHITE, fg=NAVY,
-             font=("Arial", 18, "bold"), wraplength=700).pack(anchor="w", pady=(0, 15))
-    body = tk.Text(panel, wrap="word", bg=WHITE, fg=DARK, relief="flat",
-                   font=("Arial", 11), padx=4, pady=4)
-    body.pack(fill="both", expand=True)
-    body.insert("1.0", lesson["content"])
-    body.configure(state="disabled")
-    nav = tk.Frame(main, bg=BG)
-    nav.pack(fill="x", pady=15)
-    if number > 1:
-        make_button(nav, "← Previous Topic", lambda: show_discussion(number - 1), color=NAVY).pack(side="left")
-    make_button(nav, "Back to Dashboard", dashboard, color=GRAY).pack(side="left", padx=8)
-    if number < 11:
-        make_button(nav, "Next Topic →", lambda: show_discussion(number + 1)).pack(side="right")
-    else:
-        make_button(nav, "Finish Review", dashboard).pack(side="right")
-
-def start_quiz():
-    global current_question, score
-    current_question = 0
     score = 0
-    show_question()
 
-def show_question():
-    global current_question
-    main = app_layout("Python Quiz")
-    if current_question >= len(questions):
-        show_results()
-        return
-    question, options, answer = questions[current_question]
-    heading(main, "Python Knowledge Quiz", f"Question {current_question + 1} of {len(questions)}")
-    card = tk.Frame(main, bg=WHITE, padx=24, pady=24)
-    card.pack(fill="both", expand=True)
-    tk.Label(card, text=question, bg=WHITE, fg=NAVY,
-             font=("Arial", 15, "bold"), wraplength=700,
-             justify="left").pack(anchor="w", pady=(0, 22))
-    selected_answer.set("")
-    for i, option in enumerate(options):
-        tk.Radiobutton(card, text=option, variable=selected_answer,
-                       value=str(i), bg=WHITE, fg=DARK, activebackground=WHITE,
-                       selectcolor=LIGHT_BLUE, font=("Arial", 11),
-                       anchor="w", justify="left", wraplength=680).pack(fill="x", pady=8)
+    print("\n==========================================")
+    print("              CODE QUEST QUIZ")
+    print("==========================================")
+    print("             15 QUESTIONS")
+    print("==========================================")
 
-    def submit():
-        global current_question, score
-        if selected_answer.get() == "":
-            messagebox.showwarning("Choose an answer", "Please select an answer before continuing.")
-            return
-        if int(selected_answer.get()) == answer:
+    print("\nInstructions:")
+    print("Choose the correct answer: A, B, C, or D.")
+    print("Answer all 15 questions.")
+
+    input("\nPress Enter to start the quiz...")
+
+    for question in quiz_questions:
+
+        print("\n------------------------------------------")
+        print(question["question"])
+        print("------------------------------------------")
+
+        for choice in question["choices"]:
+            print(choice)
+
+        while True:
+
+            answer = input("\nYour answer: ").upper().strip()
+
+            if answer in ["A", "B", "C", "D"]:
+                break
+
+            else:
+                print("Invalid answer!")
+                print("Please choose A, B, C, or D.")
+
+        if answer == question["answer"]:
+
+            print("\nCorrect answer!")
             score += 1
-        current_question += 1
-        show_question()
 
-    make_button(main, "Submit Answer  →", submit).pack(anchor="e", pady=15)
+        else:
 
-def show_results():
-    main = app_layout("Quiz Results")
-    percentage = round(score / len(questions) * 100)
+            print("\nIncorrect answer!")
+            print("Correct answer:", question["answer"])
+
+        input("\nPress Enter for the next question...")
+
+    percentage = (score / 15) * 100
+
+    print("\n==========================================")
+    print("               QUIZ RESULTS")
+    print("==========================================")
+
+    print("Student:", name)
+    print("Correct Answers:", score, "/ 15")
+    print("Percentage:", round(percentage, 2), "%")
+
     if score >= 13:
-        remark = "Excellent! You mastered most of the topics."
+
+        print("\nREMARK: EXCELLENT!")
+        print("You mastered most of the topics.")
+
     elif score >= 10:
-        remark = "Very good! You have a good understanding."
+
+        print("\nREMARK: VERY GOOD!")
+        print("You have a good understanding.")
+
     elif score >= 7:
-        remark = "Good effort! Review the topics you find difficult."
+
+        print("\nREMARK: GOOD EFFORT!")
+        print("Review the topics you find difficult.")
+
     else:
-        remark = "Keep practicing! Review the lessons and try again."
-    heading(main, "Quiz Completed!", "Here is your result.")
-    panel = tk.Frame(main, bg=WHITE, padx=30, pady=35)
-    panel.pack(fill="x", pady=20)
-    tk.Label(panel, text=f"{score} / {len(questions)}", bg=WHITE, fg=BLUE,
-             font=("Arial", 38, "bold")).pack()
-    tk.Label(panel, text=f"{percentage}% score", bg=WHITE, fg=GRAY,
-             font=("Arial", 13)).pack(pady=5)
-    tk.Label(panel, text=remark, bg=WHITE, fg=NAVY,
-             font=("Arial", 12, "bold"), wraplength=650).pack(pady=15)
-    make_button(main, "Try Again", start_quiz).pack(pady=5)
-    make_button(main, "Back to Dashboard", dashboard, color=NAVY).pack(pady=5)
 
-def logout():
-    if messagebox.askyesno("Log out", "Are you sure you want to log out?"):
-        login_screen()
+        print("\nREMARK: KEEP PRACTICING!")
+        print("Review the lessons and try again.")
 
-registration_screen()
-root.mainloop()
+    print("\n==========================================")
+
+    input("\nPress Enter to return to dashboard...")
+
+
+# MAIN DASHBOARD
+
+while True:
+
+    print("\n==========================================")
+    print("              CODE QUEST DASHBOARD")
+    print("==========================================")
+
+    print("Student:", name)
+    print("Completed Lessons:", len(completed), "/ 11")
+
+    print("\n1. Explore Lessons")
+    print("2. My Learning Progress")
+    print("3. Discuss All Topics")
+    print("4. Take the Quiz")
+    print("5. Logout")
+
+    print("==========================================")
+
+    option = input("Select an option: ")
+
+
+    if option == "1":
+
+        while True:
+
+            print("\n==========================================")
+            print("                EXPLORE LESSONS")
+            print("==========================================")
+
+            print("1. Introduction to Computing")
+            print("2. Python Basic Syntax")
+            print("3. Printing Output")
+            print("4. Python Comments")
+            print("5. Variables, Constants and Database")
+            print("6. Basic Data Types in Python")
+            print("7. Arithmetic Operators and Expression")
+            print("8. Basic Input and Output")
+            print("9. Conditional Statements")
+            print("10. Logical Operators")
+            print("11. Iterations and Loops")
+            print("12. Back to Dashboard")
+
+            print("==========================================")
+
+            topic = input("Choose a lesson: ")
+
+            if topic.isdigit() and 1 <= int(topic) <= 11:
+
+                topic_number = int(topic)
+
+                print(lessons[topic_number])
+
+                if topic_number not in completed:
+                    completed.append(topic_number)
+
+                print("Lesson completed!")
+
+                input("\nPress Enter to return to lessons...")
+
+            elif topic == "12":
+                break
+
+            else:
+                print("Invalid lesson selection!")
+
+
+    elif option == "2":
+
+        print("\n==========================================")
+        print("             MY LEARNING PROGRESS")
+        print("==========================================")
+
+        print("Student:", name)
+        print("Completed:", len(completed), "out of 11")
+
+        for number in range(1, 12):
+
+            if number in completed:
+                status = "COMPLETED"
+            else:
+                status = "NOT YET COMPLETED"
+
+            print("Lesson", number, "-", status)
+
+        if len(completed) == 11:
+            print("\nCONGRATULATIONS!")
+            print("You completed all lessons!")
+
+        input("\nPress Enter to return to dashboard...")
+
+
+    elif option == "3":
+
+        print("\nSTARTING COMPLETE LESSON DISCUSSION")
+
+        for number in range(1, 12):
+
+            print(lessons[number])
+
+            if number not in completed:
+                completed.append(number)
+
+            input("\nPress Enter for the next lesson...")
+
+        print("\nYou finished all discussions!")
+
+        input("\nPress Enter to return to dashboard...")
+
+
+    elif option == "4":
+
+        take_quiz()
+
+
+    elif option == "5":
+
+        print("\n==========================================")
+        print("                SESSION ENDED")
+        print("==========================================")
+
+        print("Thank you for using CODE QUEST!")
+        print("Keep learning and improving,", name)
+        print("Goodbye!")
+
+        break
+
+
+    else:
+
+        print("\nInvalid option! Please try again.")
+
